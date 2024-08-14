@@ -9,4 +9,6 @@ function gqlRequest(postData) {
 
 }
 
-module.exports = { gqlRequest };
+
+module.exports = gqlRequest;
+
