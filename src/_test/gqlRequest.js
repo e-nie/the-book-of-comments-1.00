@@ -5,10 +5,8 @@ function gqlRequest(postData) {
     return request(url)
         .post('/')
         .send(postData)
-        .expect(200)
-
 }
 
 
-module.exports = gqlRequest;
+module.exports = { gqlRequest }
 

@@ -4,10 +4,9 @@
   "main": "src/index.js",
   "scripts": {
 
-    "test": "mocha ./src/_test/user/userCreate.spec.js",
+    "test": "mocha ./src/_test/user/userGetById.spec.js",
     "start": "nodemon src/index.js"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",

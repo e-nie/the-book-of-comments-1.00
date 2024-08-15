@@ -1,6 +1,4 @@
 const { expect } = require('chai');
-
-// import { expect } from 'chai';
 const {userCreateQ} = require('./queries');
 const {user } = require('./data');
 const { gqlRequest } = require('../gqlRequest');
@@ -18,12 +16,13 @@ describe('USER CREATE', () => {
                 variables: user
             };
             gqlRequest(postData)
-
+                .expect(200)//supertest
                 .end((err, res) => {
                     if (err) return done(err);
-                    respData = res.body;
+                    respData = res.body.data.userCreate
                     console.log(respData);
-                    // expect(resData).eq();
+                    expect(respData.firstName).eq(user.userInput.firstName);
+                    expect(respData.lastName).eq(user.userInput.lastName);
                     done()
                 });
         });
