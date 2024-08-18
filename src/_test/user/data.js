@@ -4,4 +4,11 @@ const user = {
         lastName: 'testLastName'
     }
 }
-module.exports =  {user}
+
+const userUpdate = {
+    userInput: {
+        firstName: 'testUpdatedFirstName',
+        lastName: 'testUpdatedLastName'
+    }
+}
+module.exports =  {user, userUpdate}

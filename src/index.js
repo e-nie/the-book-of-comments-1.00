@@ -26,4 +26,10 @@ server.listen({port: 5000}).then(({ url }) => {
 
 
 
-
+/*
+mongoose.connect('mongodb://localhost/your-database', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 60000 // Increase the timeout to 60 seconds
+});
+ */
