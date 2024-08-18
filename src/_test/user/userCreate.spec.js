@@ -1,14 +1,26 @@
 const { expect } = require('chai');
-const {userCreateQ} = require('./queries');
-const {user } = require('./data');
+const { userCreateQ } = require('./queries');
+const { user } = require('./data');
 const { gqlRequest } = require('../gqlRequest');
-
+const User = require('../../models/User');
+const mongoose = require('mongoose');
 
 
 let respData = null;
 let postData = null;
 
+before('Delete All Users', async function() {
+    User.deleteMany({});
+    //   try {
+    //     await User.deleteMany({});
+    // } catch (error) {
+    //     console.error('Error deleting users:', error);
+    //     throw error;
+    // }
+});
+
 describe('USER CREATE', () => {
+
     describe('USER CREATE - POSITIVE TESTS', () => {
         it('user create all fields', (done) => {
             postData = {
@@ -19,19 +31,37 @@ describe('USER CREATE', () => {
                 .expect(200)//supertest
                 .end((err, res) => {
                     if (err) return done(err);
-                    respData = res.body.data.userCreate
+                    respData = res.body.data.userCreate;
                     console.log(respData);
                     expect(respData.firstName).eq(user.userInput.firstName);
                     expect(respData.lastName).eq(user.userInput.lastName);
-                    done()
+                    done();
                 });
         });
-    });
-
-    describe('USER CREATE - NEGATIVE TESTS', () => {
-        it('user create all fields', () => {
-
-
+        it('user create all fields1', (done) => {
+            postData = {
+                query: userCreateQ,
+                variables: user
+            };
+            gqlRequest(postData)
+                .expect(200)//supertest
+                .end((err, res) => {
+                    if (err) return done(err);
+                    respData = res.body.data.userCreate;
+                    console.log(respData);
+                    expect(respData.firstName).eq(user.userInput.firstName);
+                    expect(respData.lastName).eq(user.userInput.lastName);
+                    done();
+                });
         });
+
     });
+
+
+    // describe('USER CREATE - NEGATIVE TESTS', () => {
+    //     it('user create all fields', () => {
+    //
+    //
+    //     });
+    // });
 });
