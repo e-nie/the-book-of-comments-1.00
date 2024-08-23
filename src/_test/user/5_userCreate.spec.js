@@ -33,6 +33,7 @@ describe('USER CREATE', () => {
                     done();
                 });
         });
+
         it('user create all fields1', (done) => {
             postData = {
                 query: userCreateQ,
