@@ -12,7 +12,3 @@ const userUpdate = {
     }
 }
 module.exports =  {user, userUpdate}
-
-/*
-{userInput: {userId, firstName, lastName}}
- */
