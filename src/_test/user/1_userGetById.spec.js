@@ -23,8 +23,16 @@ describe('USER GET BY ID', () => {
                     if (err) return done(err);
                     respData = res.body.data.userGetById;
                     console.log(respData);
+
+
                     expect(respData.firstName ).eq(user.userInput.firstName);
                     expect(respData.lastName ).eq(user.userInput.lastName);
+                    expect(respData._id ).eq(process.env.USER_ID);
+                    expect(respData).to.deep.equal({
+                        _id: process.env.USER_ID,
+                        ...user.userInput
+                    });
+ 
                     done();
                 });
         });
