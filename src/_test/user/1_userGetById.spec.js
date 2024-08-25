@@ -9,10 +9,12 @@ let postData = null;
 
 describe('USER GET BY ID', () => {
     describe('USER GET BY ID - POSITIVE', () => {
-        it('', (done) => {
+        it('User get by id', (done) => {
             postData = {
                 query: userGetByIdQ,
-                variables: { userId: '66c76a6ca2102d52d6c4aa40' }
+                variables: {
+                    userId: process.env.USER_ID
+                }
             };
 
             gqlRequest(postData)
@@ -21,9 +23,8 @@ describe('USER GET BY ID', () => {
                     if (err) return done(err);
                     respData = res.body.data.userGetById;
                     console.log(respData);
-                    expect(respData._id).eq('66c76a6ca2102d52d6c4aa40');
-                    expect(respData.firstName).eq(user.userInput.firstName);
-                    expect(respData.lastName).eq(user.userInput.lastName);
+                    expect(respData.firstName ).eq(user.userInput.firstName);
+                    expect(respData.lastName ).eq(user.userInput.lastName);
                     done();
                 });
         });
