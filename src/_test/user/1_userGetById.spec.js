@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const { gqlRequest } = require('../gqlRequest');
 const { userGetByIdQ, userCreateQ } = require('./queries');
 const { user } = require('./data');
-const User = require('../../models/User');
 
 let respData = null;
 let postData = null;
@@ -25,6 +24,7 @@ describe('USER GET BY ID', () => {
                     respData = res.body.data.userGetById;
                     console.log(respData);
 
+
                     expect(respData.firstName ).eq(user.userInput.firstName);
                     expect(respData.lastName ).eq(user.userInput.lastName);
                     expect(respData._id ).eq(process.env.USER_ID);
@@ -32,6 +32,7 @@ describe('USER GET BY ID', () => {
                         _id: process.env.USER_ID,
                         ...user.userInput
                     });
+ 
                     done();
                 });
         });
