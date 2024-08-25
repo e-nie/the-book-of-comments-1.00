@@ -9,15 +9,13 @@ const userCreateQ = `mutation UserCreate($userInput: UserFields) {
   }
 }`;
 
-
 const userGetByIdQ = `query UserGetById($userId: ID!) {
-    userGetById(userId: $userId) {
-     _id
-        firstName
-        lastName       
-    }
+  userGetById(userId: $userId) {
+    firstName
+    lastName
+    _id
+  }
 }`;
-
 
 const userUpdateByIdQ = `mutation UserUpdateById($userInput: UserFields) {
   userUpdateById(userInput: $userInput) {
@@ -28,4 +26,4 @@ const userUpdateByIdQ = `mutation UserUpdateById($userInput: UserFields) {
 }`;
 
 
-module.exports = { userCreateQ, userGetByIdQ,userUpdateByIdQ };
+module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ };

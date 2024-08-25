@@ -1,14 +1,14 @@
 const { expect } = require('chai');
 const { gqlRequest } = require('../gqlRequest');
-const { userGetByIdQ, userCreateQ } = require('./queries');
-const { user } = require('./data');
+const { userGetByIdQ, userCreateQ, userUpdateByIdQ } = require('./queries');
+const { user, userUpdate } = require('./data');
 
 let respData = null;
 let postData = null;
 let userId = null;
 
-describe('USER GET BY ID', () => {
-    describe('USER GET BY ID - POSITIVE', () => {
+describe('USER UPDATE BY ID', () => {
+    describe('USER UPDATE BY ID - POSITIVE', () => {
         before('User Create', (done) => {
             postData = {
                 query: userCreateQ,
@@ -19,31 +19,25 @@ describe('USER GET BY ID', () => {
                 .end((err, res) => {
                     if (err) return done(err);
                     userId = res.body.data.userCreate._id;
-                    // console.log('userId: ', userId);
+                    console.log('userId: ', userId);
                     done();
                 });
         });
-
-        it('', (done) => {
+        it('User Update By Id', (done) => {
             postData = {
-                query: userGetByIdQ,
-                variables: { userId }
+                query: userUpdateByIdQ,
+                variables: { userId, ...userUpdate }
             };
             gqlRequest(postData)
                 .expect(200)//supertest
                 .end((err, res) => {
                     if (err) return done(err);
-                    respData = res.body.data.userGetById;
+                    respData = res.body.data.userUpdate;
                     console.log(respData);
-                    expect(respData._id).eq(userId);
-                    expect(respData.firstName).eq(user.userInput.firstName);
-                    expect(respData.lastName).eq(user.userInput.lastName);
+                    expect(respData.firstName).eq(userUpdate.userInput.firstName);
+                    expect(respData.lastName).eq(userUpdate.userInput.lastName);
                     done();
                 });
         });
     });
-
-    // describe('USER GET BY ID - NEGATIVE', () => {
-    //
-    // });
 });

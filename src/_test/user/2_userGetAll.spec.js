@@ -9,16 +9,6 @@ const mongoose = require('mongoose');
 let respData = null;
 let postData = null;
 
-before('Delete All Users', async function() {
-    User.deleteMany({});
-    //   try {
-    //     await User.deleteMany({});
-    // } catch (error) {
-    //     console.error('Error deleting users:', error);
-    //     throw error;
-    // }
-});
-
 describe('USER CREATE', () => {
 
     describe('USER CREATE - POSITIVE TESTS', () => {
