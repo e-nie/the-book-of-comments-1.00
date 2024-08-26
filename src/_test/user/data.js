@@ -3,12 +3,15 @@ const user = {
         firstName: 'testFirstName',
         lastName: 'testLastName'
     }
-}
+};
 
 const userUpdate = {
+    userId: null,
     userInput: {
-        firstName: 'testUpdatedFirstName',
-        lastName: 'testUpdatedLastName'
+
+        firstName: 'FIRSTNAME UPDATED',
+        lastName: 'LASTNAME UPDATED',
+
     }
-}
-module.exports =  {user, userUpdate}
+};
+module.exports = { user, userUpdate };

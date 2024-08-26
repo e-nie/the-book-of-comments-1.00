@@ -1,46 +1,36 @@
 const { expect } = require('chai');
-const { userCreateQ } = require('./queries');
+const { usersGetAllQ } = require('./queries');
 const { user } = require('./data');
 const { gqlRequest } = require('../gqlRequest');
-const User = require('../../models/User');
-const mongoose = require('mongoose');
-
 
 let respData = null;
 let postData = null;
 
-describe('USER CREATE', () => {
+describe('USER GET ALL', () => {
+    describe('USER GET ALL - POSITIVE TESTS', () => {
 
-    describe('USER CREATE - POSITIVE TESTS', () => {
-        it('user create all fields', (done) => {
+        it('users get all', (done) => {
             postData = {
-                query: userCreateQ,
-                variables: user
+                query: usersGetAllQ,
+                variables: {
+                    "amount": 3 // we can limit amount, get all by default (with null)
+                }
             };
             gqlRequest(postData)
                 .expect(200)//supertest
                 .end((err, res) => {
                     if (err) return done(err);
-                    respData = res.body.data.userCreate;
+                    respData = res.body.data.usersGetAll;
                     console.log(respData);
-                    expect(respData.firstName).eq(user.userInput.firstName);
-                    expect(respData.lastName).eq(user.userInput.lastName);
-                    done();
-                });
-        });
-        it('user create all fields1', (done) => {
-            postData = {
-                query: userCreateQ,
-                variables: user
-            };
-            gqlRequest(postData)
-                .expect(200)//supertest
-                .end((err, res) => {
-                    if (err) return done(err);
-                    respData = res.body.data.userCreate;
-                    console.log(respData);
-                    expect(respData.firstName).eq(user.userInput.firstName);
-                    expect(respData.lastName).eq(user.userInput.lastName);
+                    expect(respData.length).to.be.greaterThan(0);
+                    expect(respData).to.be.an('array').that.is.not.empty;
+                    // expect(respData).to.be.an('array').that.does.not.deep.include( {
+                    //         _id: '66aec5ea9d219777bb2dbc1c',
+                    //         firstName: 'test1',
+                    //         lastName: 'test1'
+                    //     },
+                    // )
+
                     done();
                 });
         });
@@ -48,10 +38,4 @@ describe('USER CREATE', () => {
     });
 
 
-    // describe('USER CREATE - NEGATIVE TESTS', () => {
-    //     it('user create all fields', () => {
-    //
-    //
-    //     });
-    // });
 });

@@ -17,13 +17,21 @@ const userGetByIdQ = `query UserGetById($userId: ID!) {
   }
 }`;
 
-const userUpdateByIdQ = `mutation UserUpdateById($userInput: UserFields) {
-  userUpdateById(userInput: $userInput) {
+const usersGetAllQ = `query UsersGetAll($amount: Int) {
+  usersGetAll(amount: $amount) {
     _id
     firstName
     lastName
   }
 }`;
 
+const userUpdateByIdQ = `mutation UserUpdateById($userInput: UserFields) {
+  userUpdateById(userInput: $userInput) {
+  _id
+    firstName
+    lastName
+  }
+}`;
 
-module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ };
+
+module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ, usersGetAllQ };
