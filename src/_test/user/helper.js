@@ -29,7 +29,7 @@ describe('USER CREATE', () => {
                 if (err) return done(err);
                 respData = res.body.data.userCreate;
                 process.env.USER_ID = respData._id
-                console.log('TEST USER CREATED =>', respData);
+                // console.log('TEST USER CREATED =>', respData);
                 done();
             });
     });
