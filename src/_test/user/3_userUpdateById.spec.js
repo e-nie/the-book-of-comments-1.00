@@ -15,9 +15,11 @@ describe('USER UPDATE BY ID', () => {
                 query: userUpdateByIdQ,
                 variables: {
                     userInput: {
+
                         userId: process.env.USER_ID,
                         firstName: 'FIRSTNAME UPDATED',
                         lastName: 'LASTNAME UPDATED',
+
                     }
                 }
             };

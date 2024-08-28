@@ -38,5 +38,6 @@ const userDeleteByIdQ = `mutation UserDeleteById($userId: ID) {
 }
 `
 
-
 module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ, usersGetAllQ , userDeleteByIdQ};
+
+
