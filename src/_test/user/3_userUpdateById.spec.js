@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { gqlRequest } = require('../gqlRequest');
 const { userGetByIdQ, userCreateQ, userUpdateByIdQ } = require('./queries');
-const { user, userUpdate } = require('./data');
+const { userUpdate } = require('./data');
 
 let respData = null;
 let postData = null;
@@ -15,9 +15,9 @@ describe('USER UPDATE BY ID', () => {
                 query: userUpdateByIdQ,
                 variables: {
                     userInput: {
-                        firstName: user.userInput.firstName,
-                        lastName: user.userInput.lastName,
-                        userId: process.env.USER_ID
+                        userId: process.env.USER_ID,
+                        firstName: 'FIRSTNAME UPDATED',
+                        lastName: 'LASTNAME UPDATED',
                     }
                 }
             };
@@ -27,8 +27,8 @@ describe('USER UPDATE BY ID', () => {
                     if (err) return done(err);
                     respData = res.body.data.userUpdateById;
                     console.log(respData);
-                    expect(respData.firstName).eq(userUpdate.userInput.firstName);
-                    expect(respData.lastName).eq(userUpdate.userInput.lastName);
+                    expect(respData.firstName).eq( userUpdate.userInput.firstName);
+                    expect(respData.lastName).eq( userUpdate.userInput.lastName);
                     done();
                 });
         });

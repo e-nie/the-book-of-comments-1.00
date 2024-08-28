@@ -6,12 +6,10 @@ const user = {
 };
 
 const userUpdate = {
-    userId: null,
     userInput: {
-
+    userId: process.env.USER_ID,
         firstName: 'FIRSTNAME UPDATED',
         lastName: 'LASTNAME UPDATED',
-
     }
 };
 module.exports = { user, userUpdate };
