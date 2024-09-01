@@ -38,6 +38,16 @@ const userDeleteByIdQ = `mutation UserDeleteById($userId: ID) {
 }
 `;
 
-module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ, usersGetAllQ, userDeleteByIdQ };
+
+//
+
+const userCreateWrongQ = `mutation UserCreate($userInput: UserFields) {
+  userCreate(userInput: $userInput) {
+    _id
+    firstName_
+    lastName
+  }
+}`;
+module.exports = { userCreateQ, userGetByIdQ, userUpdateByIdQ, usersGetAllQ, userDeleteByIdQ , userCreateWrongQ};
 
 

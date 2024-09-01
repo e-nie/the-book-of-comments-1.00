@@ -18,7 +18,7 @@ const userUpdate = {
 const userEmptyFields = {
     userInput: {
         firstName: '',
-        lastName: ''
+        lastName: null
     }
 };
 
