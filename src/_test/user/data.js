@@ -1,3 +1,4 @@
+//positive
 const user = {
     userInput: {
         firstName: 'testFirstName',
@@ -12,4 +13,14 @@ const userUpdate = {
         lastName: 'LASTNAME UPDATED',
     }
 };
-module.exports = { user, userUpdate };
+
+//negative
+const userEmptyFields = {
+    userInput: {
+        firstName: '',
+        lastName: null
+    }
+};
+
+
+module.exports = { user, userUpdate,userEmptyFields };

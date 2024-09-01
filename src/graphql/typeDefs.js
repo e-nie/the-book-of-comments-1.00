@@ -20,7 +20,7 @@ module.exports = gql`
     input UserFields {
         userId: ID
         firstName: String
-        lastName: String
+        lastName: String!
     }
 
     input CommentFields {
