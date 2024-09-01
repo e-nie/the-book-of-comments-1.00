@@ -35,10 +35,10 @@ describe('USER CREATE', () => {
     });
 
 
-    // describe('USER CREATE - NEGATIVE TESTS', () => {
-    //     it('user create all fields', () => {
-    //
-    //
-    //     });
-    // });
+    describe('USER CREATE - NEGATIVE TESTS', () => {
+        it('user create all fields', () => {
+
+
+        });
+    });
 });
